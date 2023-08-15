@@ -30,9 +30,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${roboto.variable} ${helvetica.variable}`}>
-      <body className="text-white bg-neutral-800">
+      <body className="text-opacity-80 text-black dark:text-white dark:bg-neutral-800">
         <Navbar />
-        <div className="pt-20 font-sans px-4 ">
+        <div className="pt-20 font-sans">
           {children}
         </div>
       </body>
