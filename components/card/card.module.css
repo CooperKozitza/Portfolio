@@ -1,0 +1,6 @@
+.card {
+  background: rgba( 255, 255, 255, 0.25 );
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  @apply transition duration-500 border rounded-2xl hover:shadow-2xl p-10
+}

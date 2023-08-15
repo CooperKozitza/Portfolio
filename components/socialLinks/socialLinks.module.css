@@ -1,0 +1,3 @@
+.link {
+  @apply transition rounded-md hover:bg-white hover:text-neutral-800 dark:text-white p-2 mr-3
+}

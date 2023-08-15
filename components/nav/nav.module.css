@@ -1,0 +1,50 @@
+.nav {
+  z-index: 1;
+  @apply fixed top-0 left-0 p-4 w-full
+}
+
+.navbar {
+  @apply max-w-6xl flex flex-wrap items-center justify-between p-2 mx-auto font-display transition duration-500 rounded-xl w-full
+}
+
+.navbarToggle {
+  @apply block sm:hidden p-2 active:border border-transparent hover:border-gray-200 active:rounded-md 
+}
+
+.navbarLinks {
+  @apply font-medium flex flex-col sm:flex-row text-right
+}
+
+.hide {
+  transform-origin: top center;
+  animation: hide .1s ease-in;
+  @apply hidden sm:block w-full sm:w-fit
+}
+
+@keyframes hide {
+  0% {
+    display: block;
+    transform: scaleY(1);
+  }
+  100% {
+    display: none;
+    transform: scaleY(0);
+  }
+}
+
+.show {
+  transform-origin: top center;
+  animation: show .1s ease-in;
+  @apply block w-full sm:w-fit
+}
+
+@keyframes show {
+  0% {
+    display: none;
+    transform: scaleY(0);
+  }
+  100% {
+    display: block;
+    transform: scaleY(1);
+  }
+}

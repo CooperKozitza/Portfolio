@@ -1,0 +1,31 @@
+.layer {
+  transition: scale 0.5s ease;
+  border-radius: 25%;
+  transform: rotateX(60deg) rotateZ(45deg);
+  height: 200px;
+  width: 200px;
+}
+
+.layer:hover {
+  scale: 1.2;
+}
+
+.layerWrapper {
+  height: 50px;
+  width: 300px;
+}
+
+.textFade {
+  animation: fade-up 0.5s ease;
+}
+
+@keyframes fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}

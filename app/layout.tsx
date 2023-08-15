@@ -1,4 +1,4 @@
-import Navbar from '@/components/nav'
+import Navbar from '@/components/nav/nav'
 import './globals.css'
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
@@ -30,9 +30,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${roboto.variable} ${helvetica.variable}`}>
-      <body className="text-opacity-80 text-black dark:text-white dark:bg-neutral-800">
+      <body className="text-black dark:text-white dark:bg-neutral-800">
         <Navbar />
-        <div className="pt-20 font-sans">
+        <div className="font-sans" style={{ paddingTop: '5.5rem' }}>
           {children}
         </div>
       </body>

@@ -1,20 +1,52 @@
 import Hero from "@/components/hero/hero";
 
-const Home = () => (
-  <>
-    <Hero />
-    <div className="p-10">
-      <div className="max-w-6xl mx-auto">
-        <h1 className="py-4 text-4xl font-display">Work History</h1>
-        <div className="flex flex-auto">
-          <div className="bg-green-400 w-8 rounded mx-6"></div>
-          <div>
-            Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.
+import styles from "./page.module.css"
+import Card from "@/components/card/card";
+import Stack from "@/components/stack/stack";
+
+
+const Home = () => {
+  return (
+    <>
+      <Hero />
+      <div>
+        <div className="p-10">
+          <h2 className="text-center text-4xl tracking-tight font-display">
+            Full Stack Development <br />
+            And <span className={styles.gradientTextOrange}>More</span>
+          </h2>
+        </div>
+        <div className="max-w-4xl mx-auto p-6">
+          <Stack />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-6xl mx-auto px-6">
+          <div className="grid grid-rows-2 gap-4">
+            <Card className="hover:border hover:border-[#ff663b]">
+              <div>
+                <h3 className="text-2xl font-display">Desktop Applicaions</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.
+                </p>
+              </div>
+            </Card>
+            <Card className="hover:border hover:border-[#ff663b]">
+              Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.
+            </Card>
           </div>
+          <Card className="hover:border hover:border-[#ff663b]">
+            Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.
+          </Card>
+        </div> 
+      </div>
+      <div>
+        <div className="p-10">
+          <h2 className="text-center text-4xl tracking-tight font-display">
+            The Right <span className={styles.gradientTextPink}>Tools</span> For The Job
+          </h2>
         </div>
       </div>
-    </div>
-  </> 
-)
+    </> 
+  )
+}
 
 export default Home;
