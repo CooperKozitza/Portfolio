@@ -3,6 +3,7 @@ import Hero from "@/components/hero/hero";
 import styles from "./page.module.css"
 import Card from "@/components/card/card";
 import Stack from "@/components/stack/stack";
+import Tools from "@/components/tools/tools";
 
 
 const Home = () => {
@@ -43,6 +44,9 @@ const Home = () => {
           <h2 className="text-center text-4xl tracking-tight font-display">
             The Right <span className={styles.gradientTextPink}>Tools</span> For The Job
           </h2>
+        </div>
+        <div className="max-w-4xl mx-auto p-6">
+          <Tools />
         </div>
       </div>
     </> 
