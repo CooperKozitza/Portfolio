@@ -4,7 +4,6 @@ import Image from "next/image";
 
 import styles from "./hero.module.css"
 import heroBackground from "@/public/static/images/hero-bg.svg"
-import { FaCaretDown } from "react-icons/fa";
 
 const Hero = () => (
   <>

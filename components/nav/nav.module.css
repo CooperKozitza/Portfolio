@@ -1,6 +1,6 @@
 .nav {
   z-index: 1;
-  @apply fixed top-0 left-0 p-4 w-full
+  @apply fixed top-0 left-0 p-4 w-screen transition
 }
 
 .navbar {

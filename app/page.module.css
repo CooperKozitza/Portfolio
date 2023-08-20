@@ -33,6 +33,8 @@
 
 .layer {
   transition: scale 0.5s ease;
+  -webkit-transition: scale 0.5 ease;
+  -moz-transition: scale 0.5 ease;
   border-radius: 25%;
   transform: rotateX(60deg) rotateZ(45deg);
   height: 200px;
