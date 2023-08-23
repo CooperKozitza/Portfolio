@@ -8,7 +8,7 @@ import heroBackground from "@/public/static/images/hero-bg.svg"
 const Hero = () => (
   <>
     <div className={styles.background}>
-      <Image src={heroBackground} alt="gradient background" className={styles.gradient}/>
+      <Image src={heroBackground} fill alt="gradient background" className={styles.gradient}/>
     </div>
     <div className={styles.hero}>
       <div className={styles.text}>

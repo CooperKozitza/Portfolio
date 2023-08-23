@@ -2,7 +2,10 @@
   height: 100vh;
   min-height: 650px;
   filter: blur(80px);
+  transform: translate3d(0, 0, 0);
   -webkit-filter: blur(80px);
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
   @apply absolute top-0 left-0 overflow-hidden w-full
 }
 
@@ -13,7 +16,7 @@
 
 .hero {
   height: calc(100vh - 5.5rem);
-  min-height: calc(650px - 5.5rem);
+  min-height: calc(650px - 6.5rem);
   @apply mb-0 md:mb-20
 }
 
@@ -33,14 +36,14 @@
 
 @keyframes ping {
   0% {
-    scale: 2;
+    transform: scale(2);
     opacity: 0;
   }
   25% {
-    scale: 2;
+    transform: scale(2);
   }
   100% {
-    scale: 1;
+    transform: scale(1);
     opacity: 1;
   }
 }
