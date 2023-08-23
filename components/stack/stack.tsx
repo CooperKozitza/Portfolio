@@ -3,7 +3,8 @@
 import { useState } from "react";
 
 import styles from "./stack.module.css"
-import { FaDatabase, FaExchangeAlt,  FaProjectDiagram, FaReact, FaServer } from "react-icons/fa";
+import { FaDatabase, FaDesktop, FaExchangeAlt,  FaProjectDiagram, FaReact, FaServer } from "react-icons/fa";
+import { IconType } from "react-icons";
 
 const LAYER_COUNT = 3;
 enum StackLayer {
@@ -11,6 +12,12 @@ enum StackLayer {
   Backend = 1,
   Frontend = 2,
 };
+
+const layerIcons: IconType[] = [
+  FaDatabase,
+  FaServer,
+  FaDesktop,
+];
 
 const DataBase = () => (
   <div>
@@ -71,10 +78,11 @@ const Stack = () => {
     <div className="md:flex">
       <div className="md:mr-10">
         <div className="text-center text-sm text-neutral-500">
-          Hover over a layer to learn more.
+          <span className="hidden md:inline">Hover over</span><span className="inline md:hidden">Tap</span> a layer to learn more.
+
         </div>
         <div className="group p-4 h-80 flex flex-col-reverse justify-center">
-        {[...Array(LAYER_COUNT)].map((_, index: StackLayer) => (
+        {layerIcons.map((Icons, index: StackLayer) => (
             <div 
               className={`
                 ${index == StackLayer.DataBase ? "group-hover:translate-y-10" 
@@ -84,12 +92,9 @@ const Stack = () => {
               `}
               key={index}>
               <div 
-                className={`${styles.layer} shadow-xl`}
-                style={{ 
-                  background: "linear-gradient(80deg, rgba(256, 128, 0, 1) 0%, rgba(255, 72, 127, 1) 100%)",
-                  scale: activeLayer == index ? "1.2" : "1",
-                }}
+                className={`${styles.layer} ${activeLayer == index ? styles.layerHighlight : ""} flex items-center justify-center text-white shadow-xl`}
                 onMouseEnter={() => handleHover(index)}>
+                  <Icons size={100} /> 
               </div>
             </div>
         ))}
