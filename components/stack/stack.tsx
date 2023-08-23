@@ -6,7 +6,6 @@ import styles from "./stack.module.css"
 import { FaDatabase, FaDesktop, FaExchangeAlt,  FaProjectDiagram, FaReact, FaServer } from "react-icons/fa";
 import { IconType } from "react-icons";
 
-const LAYER_COUNT = 3;
 enum StackLayer {
   DataBase = 0,
   Backend = 1,
@@ -23,15 +22,15 @@ const DataBase = () => (
   <div>
     <h3 className="text-2xl font-display">Database</h3>
     <div className={`${styles.textFade} py-4`}>
-      <h4 className="flex items-center gap-2 font-bold"><FaDatabase /> SQL Relational Databases</h4>
+      <h4 className="flex items-center gap-2 font-bold font-mono"><FaDatabase /> SQL Relational Databases</h4>
       <p className="p-4 pb-2">
         Managing and querying relational databases like MSSQL, MySQL, and SQLite.
       </p>
     </div>
     <div className={`${styles.textFade} py-4`}>
-      <h4 className="flex items-center gap-2 font-bold"><FaProjectDiagram /> Object Relational Mapping</h4>
+      <h4 className="flex items-center gap-2 font-bold font-mono"><FaProjectDiagram /> Object Relational Mapping</h4>
       <p className="p-4 pb-2">
-        Bridging the gap between relational databases and object-oriented programming languages with Prisma for JS/TS, Deisel for Rust, and Entity Framework for .NET, streamlining database interactions and data representation.
+        Bridging the gap between relational databases and object-oriented programming languages with Prisma for JS/TS, Diesel for Rust, and Entity Framework for .NET, streamlining database interactions and data representation.
       </p>
     </div>
   </div>
@@ -41,13 +40,13 @@ const Backend = () => (
   <div>
     <h3 className="text-2xl font-display">Backend</h3>
     <div className={`${styles.textFade} py-4`}>
-      <h4 className="flex items-center gap-2 font-bold"><FaExchangeAlt /> API</h4>
+      <h4 className="flex items-center gap-2 font-bold font-mono"><FaExchangeAlt /> APIs</h4>
       <p className="p-4 pb-2">
         Fast backend APIs built with Node.js and Express, Rust and Rocket, or C# and ASP.NET.
       </p>
     </div>
     <div className={`${styles.textFade} py-4`}>
-      <h4 className="flex items-center gap-2 font-bold"><FaServer />Server Side Rendering</h4>
+      <h4 className="flex items-center gap-2 font-bold font-mono"><FaServer />Server Side Rendering</h4>
       <p className="p-4 pb-2">
         Merging frontend and backend with full-stack frameworks like Next.js and ASP.NET. 
       </p>
@@ -59,7 +58,7 @@ const Frontend = () => (
   <div>
     <h3 className="text-2xl font-display">Frontend</h3>
     <div className={`${styles.textFade} py-4`}>
-      <h4 className="flex items-center gap-2 font-bold"><FaReact /> Component Based Frontend Frameworks</h4>
+      <h4 className="flex items-center gap-2 font-bold font-mono"><FaReact /> Component Based Frontend Frameworks</h4>
       <p className="p-4 pb-2">
         Interactive user interfaces built with React using TailwindCSS/Bootstrap for styling, and Redux for state management.
       </p>
@@ -79,9 +78,8 @@ const Stack = () => {
       <div className="md:mr-10">
         <div className="text-center text-sm text-neutral-500">
           <span className="hidden md:inline">Hover over</span><span className="inline md:hidden">Tap</span> a layer to learn more.
-
         </div>
-        <div className="group p-4 h-80 flex flex-col-reverse justify-center">
+        <div className="group p-4 h-80 flex flex-col-reverse justify-center items-center">
         {layerIcons.map((Icons, index: StackLayer) => (
             <div 
               className={`
