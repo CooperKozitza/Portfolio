@@ -1,34 +1,69 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+#Portfolio
+
+This is my personal portfolio website I will use to display my projects and skills. It is built using Next.Js's static site generation. It isn't currently hosted anywhere, as it is a work in progress, but you may use the steps below to run the website for yourself.
+
+## Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+- Node.js (preferably the latest LTS version)
+- npm (comes with Node.js) or Yarn
 
 ## Getting Started
 
-First, run the development server:
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+### Cloning the Project
+
+To clone the project, run the following command in your terminal:
+
+```bash
+git clone https://github.com/CooperKozitza/Portfolio.git
+```
+
+### Installing Dependencies
+
+Navigate to the project directory:
+
+```bash
+cd Portfolio 
+```
+
+Install the project dependencies using npm or Yarn:
+
+```bash
+npm install
+# or
+yarn
+```
+
+### Running the Development Server
+
+To start the development server, run:
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This will start the Next.js development server. You can now access the website at [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Building for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+To build the project for production use:
 
-## Learn More
+```bash
+npm run build
+# or
+yarn build
+```
 
-To learn more about Next.js, take a look at the following resources:
+This will generate a `.next` folder with the production build. You can start the production server with:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm start
+# or
+yarn start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
