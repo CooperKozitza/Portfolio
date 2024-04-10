@@ -18,9 +18,15 @@ const Home = () => {
           </h2>
         </div>
         <div className="max-w-4xl mx-auto p-6">
+          <p className="text-center pb-4">
+            In the field of full-stack web development, the journey from an initial idea to a fully functioning web application involves an understanding of both design principles and technical execution. 
+            Our role is critical in translating complex project requirements into efficient, scalable solutions, covering every aspect of web development from the user interface to the underlying databases.
+          </p>
+        </div>
+        <div className="max-w-4xl mx-auto p-6">
           <Stack />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-6xl mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto px-6">
           <div className="grid grid-rows-2 gap-4">
             <Card className="hover:border hover:border-[#ff663b]">
               <div>
