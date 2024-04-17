@@ -9,9 +9,6 @@ module.exports = {
       fontFamily: {
         sans: ['var(--font-roboto)'],
         display: ['var(--font-helvetica)']
-      },
-      backgroundImage: {
-        'hero-pattern': "url('/img/glow_1.png')"
       }
     },
   },

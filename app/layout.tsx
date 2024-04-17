@@ -1,12 +1,14 @@
 import Navbar from '@/components/nav/nav'
-import './globals.css'
+
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import { Roboto } from 'next/font/google'
 
+import './globals.css'
+
 const helvetica = localFont({
   src: [{
-    path: '../fonts/helveticaneue.woff'
+    path: './fonts/helveticaneue.woff'
   }],
   variable: '--font-helvetica',
 })

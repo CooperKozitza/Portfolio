@@ -9,10 +9,13 @@ const Navbar = () => {
   const [menuExpanded, setMenuExpanded] = useState(false);
   const [navbarBg, setNavbarBg] = useState(false);
 
+
   useEffect(() => {
     const handleScroll = () => {
       setNavbarBg(window.scrollY > 10);
     } 
+
+    handleScroll();
 
     window.addEventListener('scroll', handleScroll);
     return () => {
@@ -22,8 +25,8 @@ const Navbar = () => {
 
   return (
     <nav className={styles.nav}>
-      <div className={`${styles.navbar} ${navbarBg ? 'bg-white dark:bg-neutral-800 shadow-xl' : ''}`}>
-        <h1 className="p-2">CK</h1>
+      <div className={`${styles.navbar} ${navbarBg ? 'bg-white dark:bg-neutral-800 shadow-xl border dark:border-black' : ''}`}>
+        <h1 className="p-2"><a href="/">CK</a></h1>
         <button
           className={styles.navbarToggle}
           aria-controls="nav-menu"
@@ -35,7 +38,7 @@ const Navbar = () => {
         <div className={`${menuExpanded ? styles.show : styles.hide} w-full sm:block sm:w-fit`} id="nav-menu">
           <ul className={styles.navbarLinks}>
             <li><a href="#" className="block py-2 px-4">About</a></li>
-            <li><a href="#" className="block opacity-50 py-2 px-4">Projects</a></li>
+            <li><a href="/projects" className="block py-2 px-4">Projects</a></li>
             <li><a href="#" className="block py-2 px-4">Contact</a></li>
           </ul>
         </div>

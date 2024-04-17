@@ -19,7 +19,7 @@ const Hero = () => (
             </h1>
             <div className="relative">
               <p>
-                Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectet cupidatat. Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.
+                Blending a passion for problem-solving with a versatile skill set, I thrive on using computer science to unlock solutions to complex challenges, demonstrating the boundless potential of programming in every project I undertake.
               </p>
               <SocialLinks />
             </div>

@@ -1,10 +1,8 @@
 import Hero from "@/components/hero/hero";
-
-import styles from "./page.module.css"
-import Card from "@/components/card/card";
 import Stack from "@/components/stack/stack";
 import Tools from "@/components/tools/tools";
 
+import styles from "./page.module.css"
 
 const Home = () => {
   return (
@@ -17,33 +15,18 @@ const Home = () => {
             And <span className={styles.gradientTextOrange}>More</span>
           </h2>
         </div>
-        <div className="max-w-4xl mx-auto p-6">
-          <p className="text-center pb-4">
-            In the field of full-stack web development, the journey from an initial idea to a fully functioning web application involves an understanding of both design principles and technical execution. 
-            Our role is critical in translating complex project requirements into efficient, scalable solutions, covering every aspect of web development from the user interface to the underlying databases.
-          </p>
-        </div>
-        <div className="max-w-4xl mx-auto p-6">
+        <div className="max-w-6xl mx-auto p-6">
           <Stack />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto px-6">
-          <div className="grid grid-rows-2 gap-4">
-            <Card className="hover:border hover:border-[#ff663b]">
-              <div>
-                <h3 className="text-2xl font-display">Desktop Applicaions</h3>
-                <p>
-                  Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.
-                </p>
-              </div>
-            </Card>
-            <Card className="hover:border hover:border-[#ff663b]">
-              Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.
-            </Card>
-          </div>
-          <Card className="hover:border hover:border-[#ff663b]">
-            Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.
-          </Card>
-        </div> 
+      </div>
+      <div>
+        <div className="p-10">
+          <h2 className="text-center text-4xl tracking-tight font-display">
+            About Me
+          </h2>
+        </div>
+        <div className="w-screen pt-6 pb-6">
+        </div>
       </div>
       <div>
         <div className="p-10">

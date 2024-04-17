@@ -1,0 +1,16 @@
+.background {
+  height: 100vh;
+  min-height: 650px;
+  filter: blur(80px);
+  transform: translate3d(0, 0, 0);
+  -webkit-filter: blur(80px);
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  @apply absolute overflow-hidden w-full flex justify-end
+
+}
+
+.gradient {
+  animation: ping 4s cubic-bezier(0, 0, 0.2, 1);
+  @apply h-full absolute
+}
