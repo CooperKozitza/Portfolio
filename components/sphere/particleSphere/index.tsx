@@ -1,13 +1,13 @@
 "use client"
 
-import React, { useRef, useMemo } from "react"
-import { useFrame } from '@react-three/fiber';
+import React, { useRef, useMemo, useState, useEffect } from "react"
+import { useFrame, useThree } from '@react-three/fiber';
 
 import * as THREE from 'three';
 
 import alpha from "@/public/static/images/alpha.png"
 
-const POINT_COUNT = 5000;
+const POINT_COUNT = 8000;
 
 interface Particle {
   x: number;
@@ -23,8 +23,20 @@ interface ParticleSphereProps {
 
 const ParticleSphere = ({ radius, size, color }: ParticleSphereProps) => {
   const mesh = useRef<THREE.Points>(null);
+  const [scroll, setScroll] = useState(0);
 
-  const { particlesGeometry, particlesMaterial } = useMemo(() => {
+  const { viewport } = useThree();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScroll(window.scrollY);
+    }
+
+    document.addEventListener('scroll', handleScroll, true);
+    return () => document.removeEventListener('scroll', handleScroll, true);
+  })
+
+  const particlesGeometry = useMemo(() => {
     const points: Particle[] = [];
 
     for (var i = 0; i < POINT_COUNT; i++) {
@@ -46,27 +58,37 @@ const ParticleSphere = ({ radius, size, color }: ParticleSphereProps) => {
 
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
+
+    return particlesGeometry;
+  }, [radius]);
+
+  const particlesMaterial = useMemo(() => {
     const texture = new THREE.TextureLoader().load(alpha.src);
-    const particlesMaterial = new THREE.PointsMaterial({
+
+    return new THREE.PointsMaterial({
       color: color,
       size: size,
       map: texture,
       alphaTest: 0.5,
       transparent: true,
     });
-
-    return { particlesGeometry, particlesMaterial };
-  }, [radius, size, color]);
+  }, [size, color])
 
   useFrame(() => {
     if (mesh.current) {
-      mesh.current.rotation.y += 0.001;
-      mesh.current.rotation.x += 0.001;
+      const deltaScroll = window.scrollY - scroll;
+
+      mesh.current.rotation.y -= 0.001 + deltaScroll * 0.001;
+      mesh.current.rotation.x += 0.001 + deltaScroll * 0.001;
     }
   });
 
   return (
-    <points ref={mesh} geometry={particlesGeometry} material={particlesMaterial} />
+    <points 
+      ref={mesh} 
+      geometry={particlesGeometry} 
+      material={particlesMaterial}
+    />
   )
 }
 

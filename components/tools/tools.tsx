@@ -74,7 +74,7 @@ const Tools = () => {
 
   return (
     <div ref={currentElement}>
-      <div className="grid grid-cols-5 gap-4 justify-items-center overflow-hidden">
+      <div className="grid grid-cols-5 gap-4 md:gap-10 justify-items-center overflow-hidden">
         {tools.map((Icon, index) => {
           return <Tool 
             Icon={Icon}

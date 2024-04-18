@@ -31,6 +31,10 @@
   -webkit-background-clip: text;
 }
 
+.sectionHeader {
+  @apply text-center text-4xl tracking-tight font-display p-10
+}
+
 .layer {
   transition: scale 0.5s ease;
   -webkit-transition: scale 0.5 ease;

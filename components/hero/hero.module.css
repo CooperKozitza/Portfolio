@@ -17,7 +17,6 @@
 .hero {
   height: calc(100vh - 5.5rem);
   min-height: calc(650px - 6.5rem);
-  @apply mb-0 md:mb-20
 }
 
 .text {

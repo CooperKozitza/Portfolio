@@ -15,7 +15,7 @@ const Navbar = () => {
       setNavbarBg(window.scrollY > 10);
     } 
 
-    handleScroll();
+    handleScroll()
 
     window.addEventListener('scroll', handleScroll);
     return () => {
