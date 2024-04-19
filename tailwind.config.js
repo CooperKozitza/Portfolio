@@ -9,6 +9,9 @@ module.exports = {
       fontFamily: {
         sans: ['var(--font-roboto)'],
         display: ['var(--font-helvetica)']
+      },
+      colors: {
+        highlight: '#40d672'
       }
     },
   },

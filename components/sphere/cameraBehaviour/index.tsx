@@ -12,7 +12,7 @@ export enum CameraViewIndex {
 }
 
 export const cameraViews: Map<CameraViewIndex, CameraView> = new Map([
-  [CameraViewIndex.Initial, { x: 0, y: 0, z: 0 }],
+  [CameraViewIndex.Initial, { x: -3, y: 1.5, z: -2 }],
   [CameraViewIndex.Left, { x: -1.5, y: 2, z: 1.5 }],
   [CameraViewIndex.Right, { x: -2, y: 0.5, z: 1.5 }],
   [CameraViewIndex.Center, { x: 0, y: 1, z: 1.5 }]
@@ -27,7 +27,7 @@ const CameraBehavior = ({ view }: { view: CameraViewIndex | number }) => {
     const initalView = cameraViews.get(CameraViewIndex.Initial);
 
     if (camera && initalView) {
-      camera.position = new THREE.Vector3(initalView.x, initalView.y, initalView.z);
+      camera.position.set(initalView.x, initalView.y, initalView.z);
     }
   }, [camera])
 
@@ -35,11 +35,17 @@ const CameraBehavior = ({ view }: { view: CameraViewIndex | number }) => {
     setViewIndex(view);
   }, [view]);
 
+  useEffect(() => {
+    gl.gammaFactor = 2.2;
+    gl.gammaOutput = true; 
+    gl.outputEncoding = THREE.sRGBEncoding;
+  }, [gl]);
+
   useFrame((_, delta) => {
     const view = cameraViews.get(viewIndex);
 
     if (view) {
-      camera.position.lerp(new THREE.Vector3(view.x, view.y, view.z), 0.01)
+      camera.position.lerp(new THREE.Vector3(view.x, view.y, view.z), 0.025)
     }
 
     camera.updateProjectionMatrix();

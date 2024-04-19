@@ -95,10 +95,20 @@ const Stack = () => {
                   ${styles.layerWrapper}
                   transition duration-700 flex items-center justify-center
                 `}
-                key={index}>
+                key={index}
+                tabIndex={0}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+
+                    handleHover(index);
+                  }
+                }}
+              >
                 <div 
                   className={`${styles.layer} ${activeLayer == index ? styles.layerHighlight : ""} flex items-center justify-center text-white shadow-xl`}
-                  onMouseEnter={() => handleHover(index)}>
+                  onMouseEnter={() => handleHover(index)}
+                >
                     <Icons size={100} /> 
                 </div>
               </div>

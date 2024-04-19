@@ -10,7 +10,7 @@ const SocialLinks = () => (
     <a className={styles.link} href="https://www.instagram.com/cooper.kozitza" target="_blank" rel="noopener noreferrer">
       <FaInstagram />
     </a>
-    <a className={styles.link} href="#" target="_blank" rel="noopener noreferrer">
+    <a className={styles.link} href="" target="_blank" rel="noopener noreferrer">
       <FaTwitter />
     </a>
   </span>

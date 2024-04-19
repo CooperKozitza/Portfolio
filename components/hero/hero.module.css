@@ -1,24 +1,3 @@
-.background {
-  height: 100vh;
-  min-height: 650px;
-  filter: blur(80px);
-  transform: translate3d(0, 0, 0);
-  -webkit-filter: blur(80px);
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  @apply absolute top-0 left-0 overflow-hidden w-full
-}
-
-.gradient {
-  animation: ping 4s cubic-bezier(0, 0, 0.2, 1);
-  @apply h-full absolute
-}
-
-.hero {
-  height: calc(100vh - 5.5rem);
-  min-height: calc(650px - 6.5rem);
-}
-
 .text {
   animation: fade-in 1s ease-in;
   @apply mx-6 lg:mx-16 h-full flex flex-col justify-center

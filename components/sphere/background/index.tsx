@@ -7,29 +7,28 @@ import { Canvas } from "@react-three/fiber";
 import useVisibility from "@/utils/visible";
 
 const SphereBackground = () => {
-  const [isVisible, currentElement] = useVisibility<HTMLDivElement>();
-
-  const [view, setView] = useState(CameraViewIndex.Initial);
+  const [view, setView] = useState(CameraViewIndex.Right);
+  const [color, setColor] = useState(0);
 
   useEffect(() => {
-    const timer = setTimeout(() => setView(CameraViewIndex.Right), 3000);
-
-    return () => {
-      clearTimeout(timer);
+    const updateColor = () => {
+      setColor(window.matchMedia('(prefers-color-scheme: dark)').matches ? 0xffffff : 0);
     }
+
+    updateColor();
+
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    mediaQuery.addEventListener('change', updateColor);
+
+    return () => mediaQuery.removeEventListener('change', updateColor);
   })
 
   return (
-    <div ref={currentElement} className={`absolute size-full top-0 left-0`}>
-      {
-        isVisible ? (
-          <Canvas>
-            <ambientLight intensity={0.5} />
-            <ParticleSphere size={0.01} color={0xff487f} radius={2} />
-            <CameraBehavior view={view} />
-          </Canvas>
-        ) : null
-      }
+    <div className="absolute size-full top-0 left-0">
+      <Canvas>
+        <ParticleSphere size={0.01} radius={2} color={color} />
+        <CameraBehavior view={view} />
+      </Canvas>
     </div>
   )
 }

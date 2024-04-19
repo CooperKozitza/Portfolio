@@ -1,16 +1,11 @@
 import React from "react";
 import SocialLinks from "../socialLinks/socialLinks";
-import Image from "next/image";
 
 import styles from "./hero.module.css"
-import heroBackground from "@/public/static/images/hero-bg.svg"
 
 const Hero = () => (
   <>
-    <div className={styles.background}>
-      <Image src={heroBackground} fill alt="gradient background" className={styles.gradient}/>
-    </div>
-    <div className={styles.hero}>
+    <div className="h-dvh">
       <div className={styles.text}>
         <div className="max-w-2xl">
           <div className="max-w-xl">
