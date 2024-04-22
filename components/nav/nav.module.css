@@ -2,7 +2,7 @@
   z-index: 100;
   transform: none;
   -webkit-transform: translateZ(1000px);
-  @apply fixed top-0 left-0 w-screen p-4 z-10 transition
+  @apply fixed top-0 left-0 w-full p-4 z-10 transition
 }
 
 .navbar {
@@ -15,7 +15,7 @@
 }
 
 .navbarLinks {
-  @apply font-medium flex flex-col sm:flex-row text-right
+  @apply font-display flex flex-col sm:flex-row text-right
 }
 
 .hide {

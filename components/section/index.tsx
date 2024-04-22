@@ -8,7 +8,7 @@ interface SectionProps {
 
 const Section = React.forwardRef<HTMLDivElement, SectionProps>(({ children, id, className }, ref) => (
   <div 
-    className={`relative py-40 w-full h-dvh min-h-fit ${className}`}
+    className={`relative w-full h-dvh min-h-fit flex justify-center items-center ${className}`}
     id={id ? id : undefined}
     ref={ref}
   >

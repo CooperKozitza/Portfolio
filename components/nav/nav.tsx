@@ -26,7 +26,7 @@ const Navbar = () => {
   return (
     <nav className={styles.nav}>
       <div className={`${styles.navbar} ${navbarBg ? 'bg-white dark:bg-neutral-800 shadow-md border dark:border-black' : ''}`}>
-        <h1 className="p-2"><a href="/">CK</a></h1>
+        <h1 className="p-2 pl-3"><a href="/">CK</a></h1>
         <button
           className={styles.navbarToggle}
           aria-controls="nav-menu"
