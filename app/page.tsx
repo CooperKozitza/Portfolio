@@ -1,28 +1,31 @@
+"use client";
+
+import React from "react";
+
+import useSectionObserver from "@/utils/sectionObserver";
+
+import SphereBackground from "@/components/sphere/background";
+import Card from "@/components/card/card";
+import Section from "@/components/section";
 import Hero from "@/components/hero/hero";
 import Stack from "@/components/stack/stack";
 import Tools from "@/components/tools/tools";
 
 import styles from "./page.module.css"
 
-import React from "react";
-import SphereBackground from "@/components/sphere/background";
-import Card from "@/components/card/card";
-
-const Section = ({ children, id }: { children: React.ReactNode | React.ReactNode[], id?: string }) => (
-  <div className="relative py-40 w-full h-dvh min-h-fit flex justify-center items-center" id={id ? id : undefined}>
-    {children}
-  </div>
-)
-
 const Home = () => {
+  const { activeSection, createSectionRef } = useSectionObserver();
+
   return (
     <>
       <div className="fixed top-0 left-0 w-full h-dvh">
-        <SphereBackground />
+        <SphereBackground viewName={activeSection} />
       </div>
-      <Hero />
-      <Section id="web-development">
-        <div className="max-w-6xl p-6">
+      <Section ref={createSectionRef('hero')} id="hero">
+        <Hero />
+      </Section>
+      <Section ref={createSectionRef('web-development')} id="web-development">
+        <div className="max-w-6xl m-auto p-6">
           <h2 className={styles.sectionHeader}>
             Full Stack Development <br />
             And <span className="bg-highlight px-1">More</span>
@@ -30,13 +33,29 @@ const Home = () => {
           <Stack />
         </div>
       </Section>
-      <Section id="about-me">
-        <div className="max-w-6xl p-6">
-          <h2 className="">
-              About Me
-          </h2>
+      <Section ref={createSectionRef('about-me')} id="about-me">
+        <div className="max-w-6xl mx-auto p-6 grid grid-cols-3 grid-rows-1 gap-2">
+          <Card >
+            <h2 className="font-display text-2xl pb-2">Education</h2>
+            <p className="pb-2">
+              Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.
+            </p>
+          </Card>
+          <Card>
+            <h2>Work History</h2>
+            <p>
+              Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.
+            </p>
+          </Card>
+          <Card>
+            <h2>Education</h2>
+            <p>
+              Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.
+            </p>
+          </Card>
         </div>
       </Section>
+      {/*
       <Section id="tools">
         <div className="max-w-6xl p-6">
           <h2 className={styles.sectionHeader}>
@@ -47,6 +66,7 @@ const Home = () => {
           </Card>
         </div>
       </Section>
+      */}
     </> 
   )
 }

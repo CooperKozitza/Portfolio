@@ -7,24 +7,19 @@ export type CameraView = {
   x: number; y: number; z: number;
 }
 
-export enum CameraViewIndex {
-  Initial, Left, Right, Center
-}
-
-export const cameraViews: Map<CameraViewIndex, CameraView> = new Map([
-  [CameraViewIndex.Initial, { x: -3, y: 1.5, z: -2 }],
-  [CameraViewIndex.Left, { x: -1.5, y: 2, z: 1.5 }],
-  [CameraViewIndex.Right, { x: -2, y: 0.5, z: 1.5 }],
-  [CameraViewIndex.Center, { x: 0, y: 1, z: 1.5 }]
+export const cameraViews: Map<string, CameraView> = new Map([
+  ['', { x: -4, y: 0, z: 0 }],
+  ['web-development', { x: -1.5, y: 2, z: 1.5 }],
+  ['hero', { x: -2, y: 0.5, z: 1.5 }],
+  ['about-me', { x: 0, y: 2.5, z: 1.5 }]
 ]);
 
-const CameraBehavior = ({ view }: { view: CameraViewIndex | number }) => {
+const CameraBehavior = ({ viewName }: { viewName: string }) => {
   const { camera, gl, scene } = useThree();
-
-  const [viewIndex, setViewIndex] = useState<CameraViewIndex>(view);
+  const [view, setView] = useState<CameraView>();
 
   useEffect(() => {
-    const initalView = cameraViews.get(CameraViewIndex.Initial);
+    const initalView = cameraViews.get('');
 
     if (camera && initalView) {
       camera.position.set(initalView.x, initalView.y, initalView.z);
@@ -32,23 +27,18 @@ const CameraBehavior = ({ view }: { view: CameraViewIndex | number }) => {
   }, [camera])
 
   useEffect(() => {
-    setViewIndex(view);
-  }, [view]);
-
-  useEffect(() => {
-    gl.gammaFactor = 2.2;
-    gl.gammaOutput = true; 
-    gl.outputEncoding = THREE.sRGBEncoding;
-  }, [gl]);
+    if (cameraViews.has(viewName)) {
+      setView(cameraViews.get(viewName))
+    } else {
+      setView(cameraViews.get(''))
+    }
+  }, [viewName]);
 
   useFrame((_, delta) => {
-    const view = cameraViews.get(viewIndex);
-
     if (view) {
       camera.position.lerp(new THREE.Vector3(view.x, view.y, view.z), 0.025)
     }
 
-    camera.updateProjectionMatrix();
     gl.render(scene, camera);
   });
 

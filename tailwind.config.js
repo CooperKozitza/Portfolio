@@ -10,6 +10,10 @@ module.exports = {
         sans: ['var(--font-roboto)'],
         display: ['var(--font-helvetica)']
       },
+      fontWeight: {
+        sans: '400',
+        display: '700',
+      },
       colors: {
         highlight: '#40d672'
       }

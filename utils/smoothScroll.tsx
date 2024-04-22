@@ -19,8 +19,6 @@ export default function useSmoothScrollTo(id: string) {
     }
   }, [id])
 
-  return {
-    'data-anchor-id': id,
-    ref
-  }
+  return { 'data-anchor-id': id, ref }
 }
+

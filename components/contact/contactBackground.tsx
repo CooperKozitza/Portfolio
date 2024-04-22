@@ -1,6 +1,0 @@
-const ContactBackground = () => {
-  
-  return (
-
-  )
-}

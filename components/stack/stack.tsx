@@ -20,6 +20,12 @@ const layerIcons: IconType[] = [
   FaDesktop,
 ];
 
+const layerNames = [
+  "Database layer",
+  "Backend layer",
+  "Frontend layer",
+];
+
 const Database = () => (
   <div>
     <h3 className="text-2xl font-display">Database Skills</h3>
@@ -96,6 +102,7 @@ const Stack = () => {
                   transition duration-700 flex items-center justify-center
                 `}
                 key={index}
+                aria-label={layerNames[index]}
                 tabIndex={0}
                 onKeyDown={(event) => {
                   if (event.key === 'Enter' || event.key === ' ') {

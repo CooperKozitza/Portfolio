@@ -25,7 +25,7 @@ const Navbar = () => {
 
   return (
     <nav className={styles.nav}>
-      <div className={`${styles.navbar} ${navbarBg ? 'bg-white dark:bg-neutral-800 shadow-xl border dark:border-black' : ''}`}>
+      <div className={`${styles.navbar} ${navbarBg ? 'bg-white dark:bg-neutral-800 shadow-md border dark:border-black' : ''}`}>
         <h1 className="p-2"><a href="/">CK</a></h1>
         <button
           className={styles.navbarToggle}

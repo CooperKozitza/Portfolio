@@ -66,12 +66,6 @@ const Tool = ({ Icon, delay, visible, className, onClick }: ToolProps) => {
 const Tools = () => {
   const [isVisible, currentElement] = useVisibility<HTMLDivElement>();
 
-  const [selectedTool, setSelectedTool] = useState<number>(null);
-
-  const handleClick = (index: number) => {
-    setSelectedTool(index);
-  }
-
   return (
     <div ref={currentElement}>
       <div className="grid grid-cols-5 gap-4 md:gap-10 justify-items-center overflow-hidden">
@@ -81,7 +75,6 @@ const Tools = () => {
             delay={Math.random() * MAX_DELAY}
             visible={isVisible}
             key={index}
-            onClick={() => handleClick(index)}
           />
         })}
       </div>
