@@ -25,13 +25,11 @@ const Home = () => {
         <Hero />
       </div>
       <Section ref={createSectionRef('web-development')} id="web-development">
-        <div className="max-w-6xl m-auto p-6">
-          <h2 className={styles.sectionHeader}>
-            Full Stack Development <br />
-            And <span className="bg-highlight px-1">More</span>
-          </h2>
-          <Stack />
+        <div className={styles.sectionHeader}>
+          Full Stack Development <br />
+          And <span className="bg-highlight px-1">More</span>
         </div>
+        <Stack />
       </Section>
       {/*
       <Section ref={createSectionRef('about-me')} id="about-me">

@@ -18,6 +18,10 @@
   @apply font-display flex flex-col sm:flex-row text-right
 }
 
+.navbarLink {
+  @apply mx-4 px-1 transition duration-300 hover:bg-highlight
+}
+
 .hide {
   transform-origin: top center;
   animation: hide .1s ease-in;
@@ -50,4 +54,8 @@
     display: block;
     transform: scaleY(1);
   }
+}
+
+.logo {
+  @apply p-2 pl-3
 }

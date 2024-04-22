@@ -36,7 +36,7 @@ const CameraBehavior = ({ viewName }: { viewName: string }) => {
 
   useFrame((_, delta) => {
     if (view) {
-      camera.position.lerp(new THREE.Vector3(view.x, view.y, view.z), 0.025)
+      camera.position.lerp(new THREE.Vector3(view.x, view.y, view.z), 0.015)
     }
 
     gl.render(scene, camera);

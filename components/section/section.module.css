@@ -1,0 +1,23 @@
+.section {
+  height: 200vh;
+  @apply relative w-full min-h-fit flex justify-center items-center
+}
+
+.sectionInner {
+  @apply max-w-6xl p-6
+}
+
+.fadeIn  div {
+  opacity: 0;
+  animation: fadeIn ease 1s;
+  animation-fill-mode: forwards;
+}
+
+.fadeIn div {
+  animation-delay: calc(var(--depth, 0) * 0.05s + var(--order, 0) * 0.5s);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

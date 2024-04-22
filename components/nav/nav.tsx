@@ -26,7 +26,7 @@ const Navbar = () => {
   return (
     <nav className={styles.nav}>
       <div className={`${styles.navbar} ${navbarBg ? 'bg-white dark:bg-neutral-800 shadow-md border dark:border-black' : ''}`}>
-        <h1 className="p-2 pl-3"><a href="/">CK</a></h1>
+        <h1 className={`${styles.logo} ${styles.navbarLinks}`}><a href="/">CK</a></h1>
         <button
           className={styles.navbarToggle}
           aria-controls="nav-menu"
@@ -37,9 +37,9 @@ const Navbar = () => {
         </button>
         <div className={`${menuExpanded ? styles.show : styles.hide} w-full sm:block sm:w-fit`} id="nav-menu">
           <ul className={styles.navbarLinks}>
-            <li><a href="#" className="block py-2 px-4">About</a></li>
-            <li><a href="/projects" className="block py-2 px-4">Projects</a></li>
-            <li><a href="#" className="block py-2 px-4">Contact</a></li>
+            <li><a href="#" className={styles.navbarLink}>About</a></li>
+            <li><a href="/projects" className={styles.navbarLink}>Projects</a></li>
+            <li><a href="#" className={styles.navbarLink}>Contact</a></li>
           </ul>
         </div>
       </div>
