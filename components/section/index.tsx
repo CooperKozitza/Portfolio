@@ -32,7 +32,7 @@ const Section = React.forwardRef<HTMLDivElement, SectionProps>(({ children, id, 
   }, []);
 
   return (
-    <div className={`${styles.section} ${className}`} id={id ? id : undefined} ref={ref}>
+    <div className={`${styles.section} ${className}`} id={id ? id : undefined} ref={ref} data-scroll-align="center">
       <div className={`${styles.sectionInner} ${isVisible ? styles.fadeIn : ''}`} ref={currentElement}>
         {children}
       </div>

@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import useSectionObserver from "@/utils/sectionObserver";
+import useSectionScroll from "@/utils/sectionObserver";
 
 import SphereBackground from "@/components/sphere/background";
 import Card from "@/components/card/card";
@@ -14,14 +14,14 @@ import Tools from "@/components/tools/tools";
 import styles from "./page.module.css"
 
 const Home = () => {
-  const { activeSection, createSectionRef } = useSectionObserver();
+  const { activeSection, createSectionRef } = useSectionScroll();
 
   return (
     <>
       <div className="fixed top-0 left-0 w-full h-dvh">
         <SphereBackground viewName={activeSection} />
       </div>
-      <div className="w-full h-dvh" ref={createSectionRef('hero')} id="hero">
+      <div className="w-full h-dvh" ref={createSectionRef('hero')} id="hero" data-scroll-align="start">
         <Hero />
       </div>
       <Section ref={createSectionRef('web-development')} id="web-development">

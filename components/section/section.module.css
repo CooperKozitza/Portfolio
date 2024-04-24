@@ -1,10 +1,10 @@
 .section {
-  height: 200vh;
-  @apply relative w-full min-h-fit flex justify-center items-center
+  height: 150vh;
+  @apply relative w-full min-h-fit flex items-center
 }
 
 .sectionInner {
-  @apply max-w-6xl p-6
+  @apply max-w-6xl p-6 mx-auto
 }
 
 .fadeIn  div {
