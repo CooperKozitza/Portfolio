@@ -20,26 +20,12 @@ export default function useSectionScroll(ref: React.RefObject<SectionRefs>) {
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleScroll = useCallback(() => {
-    const scrollDelta = window.screenY - prevScroll.current;
-    
-    if (isProgrammaticScroll) {
-      switch (scrollDirection.current) {
-        case 'up':
-          if (window.scrollY < scrollTop.current) {
-            window.scrollTo({top: scrollTop.current});
-          }
-          break;
-        case 'down':
-        default:
-          if (window.scrollY > scrollTop.current) {
-            window.scrollTo({top: scrollTop.current});
-          }
-          break;
-      }
-    } else {
-      scrollDirection.current = scrollDelta > 0 ? 'down' : 'up';
-      prevScroll.current = window.scrollY;
-    }
+    if (isProgrammaticScroll.current) return;
+
+    const scrollDelta = window.scrollY - prevScroll.current;
+
+    scrollDirection.current = scrollDelta > 0 ? 'down' : 'up';
+    prevScroll.current = window.scrollY;
   }, []);
 
   useEffect(() => {
@@ -48,15 +34,16 @@ export default function useSectionScroll(ref: React.RefObject<SectionRefs>) {
     prevScroll.current = window.scrollY;
     scrollTop.current = window.scrollY;
 
+    // Create a new IntersectionObserver
     observerRef.current = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const target = entry.target.id;
 
-          if (entry.isIntersecting && scrollDirection.current === 'down' && target !== activeSection) {
-            setActiveSection(entry.target.id);
-          } else if (entry.isIntersecting && scrollDirection.current === 'up' && target !== activeSection) {
-            setActiveSection(entry.target.id);
+          if (scrollDirection.current === 'down' && target !== activeSection) {
+            setActiveSection(target);
+          } else if (scrollDirection.current === 'up' && target !== activeSection) {
+            setActiveSection(target);
           }
         }
       });
@@ -65,46 +52,54 @@ export default function useSectionScroll(ref: React.RefObject<SectionRefs>) {
     const currentObserver = observerRef.current;
     const currentSections = sectionRefs.current;
 
-    Object.values(currentSections).forEach(ref => {
+    // Observe each section
+    Object.values(currentSections).forEach((ref) => {
       if (ref) currentObserver.observe(ref);
     });
 
-    window.addEventListener('scroll', () => {
+    // Scroll handling with timeout to debounce rapid scrolling
+    const scrollHandler = () => {
+      if (isProgrammaticScroll.current) {
+        if (scrollDirection.current === 'down' && window.scrollY > scrollTop.current) {
+          window.scrollTo({ top: scrollTop.current });
+        } else if (scrollDirection.current === 'up' && window.scrollY < scrollTop.current) {
+          window.scrollTo({ top: scrollTop.current });
+        }
+      }
+
       if (scrollTimeoutRef.current) {
         clearTimeout(scrollTimeoutRef.current);
       }
-      scrollTimeoutRef.current = setTimeout(handleScroll, 100);
-    });
+      scrollTimeoutRef.current = setTimeout(handleScroll, 100); // Adjusted timeout
+    };
+
+    window.addEventListener('scroll', scrollHandler);
 
     return () => {
-      Object.values(currentSections).forEach(ref => {
+      // Clean up observers and event listeners
+      Object.values(currentSections).forEach((ref) => {
         if (ref) currentObserver.unobserve(ref);
       });
       currentObserver.disconnect();
 
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', scrollHandler);
 
       if (scrollTimeoutRef.current) {
         clearTimeout(scrollTimeoutRef.current);
       }
     };
-  }, [handleScroll, sectionRefs.current]);
+  }, [handleScroll]);
 
   useEffect(() => {
     if (!activeSection || !sectionRefs.current) return;
 
     const currentRef = sectionRefs.current[activeSection];
     if (currentRef) {
-      isProgrammaticScroll.current = true;
-
-      const currentActiveSection = sectionRefs.current[activeSection];
-
-      if (!currentActiveSection) return;
-
-      const scrollAlign = currentActiveSection.dataset.scrollAlign || 'start';
-      const sectionRect = currentActiveSection.getBoundingClientRect();
+      const sectionRect = currentRef.getBoundingClientRect();
 
       let top = 0;
+      const scrollAlign = currentRef.dataset.scrollAlign || 'start';
+
       switch (scrollAlign) {
         case 'start':
           top = window.scrollY + sectionRect.top - parseFloat(getComputedStyle(document.documentElement).fontSize) * 5.5;
@@ -119,18 +114,18 @@ export default function useSectionScroll(ref: React.RefObject<SectionRefs>) {
       }
 
       scrollTop.current = top;
+
       window.scrollTo({
         top,
-        behavior: 'smooth'
+        behavior: 'smooth',
       });
 
+      isProgrammaticScroll.current = true;
       setTimeout(() => {
         isProgrammaticScroll.current = false;
-      }, 1000);
+      }, 500);
     }
   }, [activeSection]);
-
-
 
   return { activeSection, setActiveSection };
 };
