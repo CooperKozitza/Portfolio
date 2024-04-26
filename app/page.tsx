@@ -14,6 +14,10 @@ import { FaChevronRight } from "react-icons/fa";
 
 import styles from "./page.module.css"
 
+import uw from "@/public/static/images/uw.png"
+import psu from "@/public/static/images/psu.png"
+import Image from "next/image";
+
 const Home = () => {
   const createSectionRef = useCallback((id: string) => (el: HTMLDivElement | null) => {
     if (el) {
@@ -47,7 +51,7 @@ const Home = () => {
                 Exploring the depths of mathematics and its applications in modern computing.
               </p>
             </div>
-            <a className={styles.teaserLink} href="">
+            <a className={styles.teaserLink} onClick={() => setActiveSection('education')}> 
               Learn More
               <span className="pl-1 transition-transform group-hover:translate-x-2">
                 <FaChevronRight />
@@ -84,7 +88,42 @@ const Home = () => {
           </Card>
         </div>
       </Section>
-      <div className="h-screen"></div>
+      <Section ref={createSectionRef('education')} id="education" right>
+        <div className={styles.sectionHeader}>
+          Education
+        </div>
+        <div className="pb-6">
+          <p className="font-bold font-mono pb-1">Fall 2024-now</p>
+          <div className={styles.subsectionHeader + ' flex items-center}'}>
+            <div className="flex items-center justify-center">
+              <Image src={uw} alt="University of Washington" placeholder="blur" width={35} className="pr-2" />
+            </div>
+            <p>University of Washington</p>
+          </div>
+          <p>
+            Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.
+          </p>
+        </div>
+        <div className="pb-6">
+          <p className="font-bold font-mono pb-1">Summer 2023-Fall 2024</p>
+          <div className={styles.subsectionHeader + ' flex items-center'}>
+            <div className="flex items-center justify-center">
+              <Image src={psu} alt="Portland State University" placeholder="blur" width={35} className="pr-2" />
+            </div>
+            <p>Portland State University</p>
+          </div>
+          <p>
+            Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.
+          </p>
+        </div>
+        <div className="pb-6">
+          <p className="font-bold font-mono pb-1">Fall 2021-Spring 2024</p>
+          <p className={styles.subsectionHeader}>Ida B. Wells-Barnett</p>
+          <p>
+            Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.
+          </p>
+        </div>
+      </Section>
     </> 
   )
 }

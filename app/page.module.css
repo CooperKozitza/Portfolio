@@ -3,7 +3,7 @@
 }
 
 .subsectionHeader {
-  @apply text-2xl tracking-tight font-display pb-4
+  @apply text-2xl tracking-tight font-display pb-2
 }
 
 .teaserGrid {
@@ -15,5 +15,5 @@
 }
 
 .teaserLink {
-  @apply w-fit flex items-center font-display
+  @apply w-fit flex items-center font-display hover:cursor-pointer
 }

@@ -9,9 +9,9 @@ export type CameraView = {
 
 export const cameraViews: Map<string, CameraView> = new Map([
   ['', { x: -4, y: 0, z: 0 }],
-  ['web-development', { x: -1.5, y: 2, z: 1.5 }],
   ['hero', { x: -2, y: 0.5, z: 1.5 }],
-  ['about', { x: 0, y: 2.5, z: 1.5 }]
+  ['about', { x: 0, y: 2.5, z: 1.5 }],
+  ['education', { x: 2.5, y: 0.5, z: 1.5 }],
 ]);
 
 const CameraBehavior = ({ viewName }: { viewName: string }) => {

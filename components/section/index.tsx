@@ -9,9 +9,11 @@ interface SectionProps {
   children: React.ReactNode | React.ReactNode[];
   id?: string;
   className?: string;
+  left?: boolean;
+  right?: boolean;
 }
 
-const Section = React.forwardRef<HTMLDivElement, SectionProps>(({ children, id, className }, ref) => {
+const Section = React.forwardRef<HTMLDivElement, SectionProps>(({ children, id, className,  left = false, right = false }, ref) => {
   const [isVisible, currentElement] = useVisibility<HTMLDivElement>();
 
   const assignAnimationDelays = useCallback((element: HTMLElement, depth = 0) => {
@@ -31,8 +33,15 @@ const Section = React.forwardRef<HTMLDivElement, SectionProps>(({ children, id, 
     }
   }, [assignAnimationDelays, currentElement]);
 
+  const center = !left && !right;
+
   return (
-    <div className={`${styles.section} ${className || ''}`} id={id || undefined} ref={ref} data-scroll-align="center">
+    <div 
+      className={`${styles.section} ${className || ''}${center ? ' justify-center' : ''}${left ? ' justify-start' : ''}${right ? ' justify-end' : ''}`}
+      id={id || undefined}
+      ref={ref}
+      data-scroll-align="center"
+    >
       <div className={`${styles.sectionInner} ${isVisible ? styles.fadeIn : ''}`} ref={currentElement}>
         {children}
       </div>
