@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 
 import styles from "./section.module.css"
 import useVisibility from "@/utils/visible";
@@ -14,7 +14,7 @@ interface SectionProps {
 const Section = React.forwardRef<HTMLDivElement, SectionProps>(({ children, id, className }, ref) => {
   const [isVisible, currentElement] = useVisibility<HTMLDivElement>();
 
-  const assignAnimationDelays = (element: HTMLElement, depth = 0) => {
+  const assignAnimationDelays = useCallback((element: HTMLElement, depth = 0) => {
     Array.from(element.children).forEach((child, index) => {
       if (child instanceof HTMLDivElement) {
         child.style.setProperty('--depth', depth.toString());
@@ -23,16 +23,16 @@ const Section = React.forwardRef<HTMLDivElement, SectionProps>(({ children, id, 
         assignAnimationDelays(child, depth + 1);
       }
     });
-  };
+  }, []);
 
   useEffect(() => {
     if (currentElement.current) {
       assignAnimationDelays(currentElement.current);
     }
-  }, []);
+  }, [assignAnimationDelays, currentElement]);
 
   return (
-    <div className={`${styles.section} ${className}`} id={id ? id : undefined} ref={ref} data-scroll-align="center">
+    <div className={`${styles.section} ${className || ''}`} id={id || undefined} ref={ref} data-scroll-align="center">
       <div className={`${styles.sectionInner} ${isVisible ? styles.fadeIn : ''}`} ref={currentElement}>
         {children}
       </div>

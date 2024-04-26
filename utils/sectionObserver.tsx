@@ -2,18 +2,19 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
-interface SectionRefs {
+export interface SectionRefs {
   [key: string]: HTMLDivElement | null;
 }
 
-export default function useSectionScroll() {
+export default function useSectionScroll(ref: React.RefObject<SectionRefs>) {
   const [activeSection, setActiveSection] = useState<string | null>(null);
 
   const prevScroll = useRef(0);
   const scrollDirection = useRef<'down' | 'up'>('down');
   const isProgrammaticScroll = useRef(false);
+  const scrollTop = useRef(0);
 
-  const sectionRefs = useRef<SectionRefs>({});
+  const sectionRefs = useRef<SectionRefs>(ref.current);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -21,32 +22,50 @@ export default function useSectionScroll() {
   const handleScroll = useCallback(() => {
     const scrollDelta = window.screenY - prevScroll.current;
     
-    if (!isProgrammaticScroll) {
+    if (isProgrammaticScroll) {
+      switch (scrollDirection.current) {
+        case 'up':
+          if (window.scrollY < scrollTop.current) {
+            window.scrollTo({top: scrollTop.current});
+          }
+          break;
+        case 'down':
+        default:
+          if (window.scrollY > scrollTop.current) {
+            window.scrollTo({top: scrollTop.current});
+          }
+          break;
+      }
+    } else {
       scrollDirection.current = scrollDelta > 0 ? 'down' : 'up';
       prevScroll.current = window.scrollY;
     }
   }, []);
 
   useEffect(() => {
+    if (!sectionRefs.current) return;
+
     prevScroll.current = window.scrollY;
+    scrollTop.current = window.scrollY;
 
     observerRef.current = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const target = entry.target.id;
 
-          if (entry.isIntersecting && scrollDirection.current === 'down' && entry.target.id !== activeSection) {
+          if (entry.isIntersecting && scrollDirection.current === 'down' && target !== activeSection) {
             setActiveSection(entry.target.id);
-          } else if (entry.isIntersecting && scrollDirection.current === 'up' && entry.target.id !== activeSection) {
+          } else if (entry.isIntersecting && scrollDirection.current === 'up' && target !== activeSection) {
             setActiveSection(entry.target.id);
           }
         }
       });
-    }, { threshold: [0.1, 0.9] });
+    }, { threshold: 0.1 });
 
     const currentObserver = observerRef.current;
+    const currentSections = sectionRefs.current;
 
-    Object.values(sectionRefs.current).forEach(ref => {
+    Object.values(currentSections).forEach(ref => {
       if (ref) currentObserver.observe(ref);
     });
 
@@ -58,7 +77,7 @@ export default function useSectionScroll() {
     });
 
     return () => {
-      Object.values(sectionRefs.current).forEach(ref => {
+      Object.values(currentSections).forEach(ref => {
         if (ref) currentObserver.unobserve(ref);
       });
       currentObserver.disconnect();
@@ -69,10 +88,10 @@ export default function useSectionScroll() {
         clearTimeout(scrollTimeoutRef.current);
       }
     };
-  }, [handleScroll]);
+  }, [handleScroll, sectionRefs.current]);
 
   useEffect(() => {
-    if (!activeSection) return;
+    if (!activeSection || !sectionRefs.current) return;
 
     const currentRef = sectionRefs.current[activeSection];
     if (currentRef) {
@@ -99,6 +118,7 @@ export default function useSectionScroll() {
           break;
       }
 
+      scrollTop.current = top;
       window.scrollTo({
         top,
         behavior: 'smooth'
@@ -111,12 +131,6 @@ export default function useSectionScroll() {
   }, [activeSection]);
 
 
-  const createSectionRef = useCallback((id: string) => (el: HTMLDivElement | null) => {
-    if (el) {
-      sectionRefs.current[id] = el;
-      observerRef.current?.observe(el);
-    }
-  }, []);
 
-  return { activeSection, createSectionRef };
+  return { activeSection, setActiveSection };
 };

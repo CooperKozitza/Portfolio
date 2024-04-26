@@ -19,7 +19,7 @@
 }
 
 .navbarLink {
-  @apply mx-4 px-1 transition duration-300 hover:bg-highlight
+  @apply mx-4 p-2 rounded transition duration-300 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black
 }
 
 .hide {
