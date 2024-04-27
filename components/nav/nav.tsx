@@ -38,8 +38,8 @@ const Navbar = () => {
         <div className={`${menuExpanded ? styles.show : styles.hide} w-full sm:block sm:w-fit`} id="nav-menu">
           <ul className={styles.navbarLinks}>
             <li><a href="/#about" className={styles.navbarLink}>About</a></li>
-            <li><a href="/projects" className={styles.navbarLink}>Projects</a></li>
-            <li><a href="#" className={styles.navbarLink}>Contact</a></li>
+            <li className="text-gray-400"><a className={styles.navbarLink}>Projects</a></li>
+            <li className="text-gray-400"><a className={styles.navbarLink}>Contact</a></li>
           </ul>
         </div>
       </div>

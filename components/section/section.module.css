@@ -4,7 +4,7 @@
 }
 
 .sectionInner {
-  @apply p-6 max-w-4xl 
+  @apply max-w-4xl mx-6 md:mx-16
 }
 
 .fadeIn  div {

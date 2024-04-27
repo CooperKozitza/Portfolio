@@ -30,99 +30,125 @@ const Home = () => {
 
   return (
     <>
-      <div className="fixed top-0 left-0 w-full h-dvh">
+      <figure className="fixed top-0 left-0 w-full h-dvh">
         <SphereBackground viewName={activeSection} />
-      </div>
-      <div className="w-full h-dvh" ref={createSectionRef('hero')} id="hero" data-scroll-align="start">
+      </figure>
+      <section className="w-full h-dvh" ref={createSectionRef('hero')} id="hero" data-scroll-align="start">
         <Hero />
-      </div>
+      </section>
       <Section ref={createSectionRef('about')} id="about">
-        <div className={styles.sectionHeader}>
+        <header className={styles.sectionHeader}>
           About Me
-        </div>
-        <div className="pb-6 text-center">
+        </header>
+        <p className="pb-10 text-center">
           Lorem ipsum dolor sit amet, qui minim adipisicing sint cillum sint consectetur cupidatat. Lorem ipsum dolor sit, qui minim labore minim sint cillum sint consectetur cupidatat.
-        </div>
-        <div className={styles.teaserGrid}>
+        </p>
+        <section className={styles.teaserGrid}>
           <Card className={styles.teaserCard + ' group'}>
             <div>
-              <p className={styles.subsectionHeader}>Education</p>
-              <p className="pb-6">
+              <header className={styles.subsectionHeader}>Education</header>
+              <p className="pb-8">
                 Exploring the depths of mathematics and its applications in modern computing.
               </p>
             </div>
             <a className={styles.teaserLink} onClick={() => setActiveSection('education')}> 
-              Learn More
-              <span className="pl-1 transition-transform group-hover:translate-x-2">
-                <FaChevronRight />
+              <span>
+                Learn More
               </span>
+              <figure className="pl-1 transition-transform group-hover:translate-x-2">
+                <FaChevronRight />
+              </figure>
             </a>
           </Card>
           <Card className={styles.teaserCard + ' group'}>
             <div>
-              <p className={styles.subsectionHeader}>Experience</p>
-              <p className="pb-6">
+              <header className={styles.subsectionHeader}>Experience</header>
+              <p className="pb-8">
                 Three years of engineering software and effective algorithms in a professional setting.
               </p>
             </div>
+            {/*
             <a className={styles.teaserLink} href="">
-              Learn More
-              <span className="pl-1 transition-transform group-hover:translate-x-2">
-                <FaChevronRight />
+              <span>
+                Learn More
               </span>
+              <figure className="pl-1 transition-transform group-hover:translate-x-2">
+                <FaChevronRight />
+              </figure>
             </a>
+            */}
           </Card>
           <Card className={styles.teaserCard + ' group'}>
             <div>
-              <p className={styles.subsectionHeader}>Examples</p>
-              <p className="pb-6">
+              <header className={styles.subsectionHeader}>Examples</header>
+              <p className="pb-8">
                 Projects where I apply complex concepts to create practical solutions.
               </p>
             </div>
+            {/*
             <a className={styles.teaserLink} href="">
-              Learn More
-              <span className="pl-1 transition-transform group-hover:translate-x-2">
-                <FaChevronRight />
+              <span>
+                Learn More
               </span>
+              <figure className="pl-1 transition-transform group-hover:translate-x-2">
+                <FaChevronRight />
+              </figure>
             </a>
+            */}
           </Card>
-        </div>
+        </section>
       </Section>
       <Section ref={createSectionRef('education')} id="education" right>
-        <div className={styles.sectionHeader}>
+        <header className={styles.sectionHeader}>
           Education
-        </div>
-        <div className="pb-6">
-          <p className="font-bold font-mono pb-1">Fall 2024-now</p>
-          <div className={styles.subsectionHeader + ' flex items-center}'}>
-            <div className="flex items-center justify-center">
-              <Image src={uw} alt="University of Washington" placeholder="blur" width={35} className="pr-2" />
-            </div>
-            <p>University of Washington</p>
-          </div>
-          <p>
-            Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.
-          </p>
-        </div>
-        <div className="pb-6">
-          <p className="font-bold font-mono pb-1">Summer 2023-Fall 2024</p>
-          <div className={styles.subsectionHeader + ' flex items-center'}>
-            <div className="flex items-center justify-center">
-              <Image src={psu} alt="Portland State University" placeholder="blur" width={35} className="pr-2" />
-            </div>
-            <p>Portland State University</p>
-          </div>
-          <p>
-            Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.
-          </p>
-        </div>
-        <div className="pb-6">
-          <p className="font-bold font-mono pb-1">Fall 2021-Spring 2024</p>
-          <p className={styles.subsectionHeader}>Ida B. Wells-Barnett</p>
-          <p>
-            Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.
-          </p>
-        </div>
+        </header>
+        <Card className="max-w-2xl">
+        <section className="pb-8" id="uw">
+            <time className={styles.monoText}>Starting Fall 2024</time>
+            <header className={styles.subsectionHeader + ' flex items-center}'}>
+              <figure className={styles.icon}>
+                <Image src={uw} alt="University of Washington logo" width={35} className="pr-2" />
+              </figure>
+              <span>University of Washington</span>
+            </header>
+            <p>
+              Committed to studying&nbsp;
+              <a 
+                className="underline underline-offset-2"
+                href="https://www.washington.edu/students/gencat/program/S/AppliedandComputationalMathSciences-994.html#undergradPrograms" 
+                target="_blank" 
+                rel="noreferrer noopener"
+              >
+                Applied and Computational Mathematical Sciences
+              </a>
+              &nbsp;with a minor in Physics.
+            </p>
+          </section>
+          <section className="pb-8" id="psu">
+            <time className={styles.monoText}>Summer 2023-Fall 2024</time>
+            <header className={styles.subsectionHeader + ' flex items-center}'}>
+              <figure className={styles.icon}>
+                <Image src={psu} alt="Portland State University logo" width={35} className="pr-2" />
+              </figure>
+              <span>Portland State University</span>
+            </header>
+            <p>
+              Courses CS161: Introduction to Programming and CS162: Introduction to Computer Science.
+              Achieved a 4.0 GPA, excelling in foundational computer science concepts.
+            </p>
+          </section>
+          <section id="ibw">
+            <time className={styles.monoText}>Fall 2020-Spring 2024</time>
+            <header className={styles.subsectionHeader + ' flex items-center}'}>
+              Ida B. Wells-Barnett Highschool
+            </header>
+            <p>
+              Achieved a 3.98 unweighted GPA and a 4.2 weighted GPA,
+              honored with Career Technical Education (CTE) honors,
+              and completed 9 AP courses, demonstrating strong academic rigor.
+            </p>
+          </section>
+        </Card>
       </Section>
     </> 
   )

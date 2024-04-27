@@ -15,9 +15,10 @@ export default function useVisibility<T extends HTMLElement>(
     const box = currentElement.current.getBoundingClientRect()
 
     const topVisible = box.top + offset <= window.innerHeight && box.top >= 0;
-    const bottomVisible = box.bottom + offset <= window.innerHeight && box.bottom >= 0;
+    const bottomVisible = box.bottom - offset >= 0 && box.bottom <= window.innerHeight;
+    const middleVisible = (box.top + box.height / 2 + offset <= window.innerHeight) && (box.top + box.height / 2 >= 0);
 
-    setIsVisible(topVisible || bottomVisible)
+    setIsVisible(topVisible || bottomVisible || middleVisible);
   }
 
   useEffect(() => {
