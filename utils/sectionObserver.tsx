@@ -43,7 +43,7 @@ export default function useSectionScroll(ref: React.RefObject<SectionRefs>) {
           setActiveSection(target);
         }
       });
-    }, { threshold: 0.5 });
+    }, { threshold: 0.25 });
 
     const currentObserver = observerRef.current;
     const currentSections = sectionRefs.current;

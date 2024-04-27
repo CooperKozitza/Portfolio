@@ -15,5 +15,13 @@
 }
 
 .teaserLink {
-  @apply w-fit flex items-center font-display hover:cursor-pointer
+  @apply w-fit flex items-center font-bold font-mono hover:cursor-pointer
+}
+
+.monoText {
+  @apply font-bold font-mono pb-1
+}
+
+.icon {
+  @apply flex items-center justify-center pr-2
 }
