@@ -28,7 +28,7 @@ export default function RootLayout({
     <html lang="en" className={`${roboto.variable}`}>
       <body className="text-black dark:text-white dark:bg-neutral-800">
         <Navbar />
-        <div className={`font-sans ${styles.scrollSnapContainer}`}>
+        <div className={`font-sans text-sm md:text-base ${styles.scrollSnapContainer}`}>
           {children}
         </div>
       </body>
