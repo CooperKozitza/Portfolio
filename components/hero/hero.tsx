@@ -4,8 +4,8 @@ import SocialLinks from "../socialLinks/socialLinks";
 import styles from "./hero.module.css"
 
 const Hero = () => (
-  <div className={styles.text}>
-    <div className="max-w-xl">
+  <div className={styles.hero}>
+    <div className={styles.text}>
       <h1 className="font-display text-8xl tracking-tight pb-6">
         Cooper Kozitza
       </h1>

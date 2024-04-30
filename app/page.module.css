@@ -1,16 +1,5 @@
-.scrollSnapContainer {
-  height: calc(100vh - 5.5rem);
-  overflow-y: auto;
-
-  scroll-snap-type: y mandatory;
-}
-
-.scrollSnapStart {
+.scrollSnapTarget {
   scroll-snap-align: start;
-}
-
-.scrollSnapCenter {
-  scroll-snap-align: center;
 }
 
 .sectionHeader {
@@ -38,5 +27,5 @@
 }
 
 .icon {
-  @apply flex items-center justify-center pr-2
+  @apply flex items-center justify-center pr-2 dark:invert
 }

@@ -1,47 +1,52 @@
 "use client";
 
-import React, { useCallback, useRef } from "react";
-
-import useSectionScroll, { SectionRefs } from "@/utils/sectionObserver";
+import React, { useCallback } from "react";
+import Image from "next/image";
+import { FaChevronRight } from "react-icons/fa";
 
 import SphereBackground from "@/components/sphere/background";
 import Card from "@/components/card/card";
 import Section from "@/components/section";
 import Hero from "@/components/hero/hero";
-import Stack from "@/components/stack/stack";
-import Tools from "@/components/tools/tools";
-import { FaChevronRight } from "react-icons/fa";
 
 import styles from "./page.module.css"
 
 import uw from "@/public/static/images/uw.png"
 import psu from "@/public/static/images/psu.png"
-import Image from "next/image";
+import useSectionObserver from "@/utils/sectionObserver";
+
 
 const Home = () => {
-  const createSectionRef = useCallback((id: string) => (el: HTMLDivElement | null) => {
-    if (el) {
-      sectionRefs.current[id] = el;
-    }
+  const { activeSection, createSectionRef } = useSectionObserver();
+
+  const scrollToSection = useCallback((sectionId: string) => {
+      const section = document.getElementById(sectionId);
+      if (section) {
+          section.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
+          });
+      }
   }, []);
 
-  const sectionRefs = useRef<SectionRefs>({});
-  const { activeSection, setActiveSection } = useSectionScroll(sectionRefs);
-
   return (
-    <>
-    <figure className="fixed top-0 left-0 w-full h-dvh" style={{ zIndex: -1 }}>
-      <SphereBackground viewName={activeSection} />
-    </figure>
-      <section className={`w-full h-dvh ${styles.scrollSnapStart}`} ref={createSectionRef('hero')} id="hero">
+    <div style={{scrollSnapType: 'y mandatory'}}>
+      <figure className="fixed top-0 left-0 w-full h-dvh" style={{ zIndex: -1 }}>
+        <SphereBackground viewName={activeSection} />
+      </figure>
+      <section 
+        className={`w-full h-dvh ${styles.scrollSnapTarget}`} 
+        ref={createSectionRef('hero')} 
+        id="hero"
+      >
         <Hero />
       </section>
-      <Section className={styles.scrollSnapCenter} ref={createSectionRef('about')} id="about">
+      <Section className={styles.scrollSnapTarget} ref={createSectionRef('about')} id="about">
         <header className={styles.sectionHeader}>
           About Me
         </header>
         <p className="pb-10 text-center">
-          Lorem ipsum dolor sit amet, qui minim adipisicing sint cillum sint consectetur cupidatat. Lorem ipsum dolor sit, qui minim labore minim sint cillum sint consectetur cupidatat.
+          Hello! I&apos;m Cooper, a student at the intersection of computational math and software engineering. From algorithms to applications, my academic and professional experiences have shaped my approach to technology, driving me to innovate and improve wherever I can.
         </p>
         <section className={styles.teaserGrid}>
           <Card className={styles.teaserCard + ' group'}>
@@ -51,7 +56,7 @@ const Home = () => {
                 Exploring the depths of mathematics and its applications in modern computing.
               </p>
             </div>
-            <a className={styles.teaserLink} onClick={() => setActiveSection('education')}>
+            <a className={styles.teaserLink} onClick={() => scrollToSection('education')}>
               <span>
                 Learn More
               </span>
@@ -98,7 +103,12 @@ const Home = () => {
           </Card>
         </section>
       </Section>
-      <Section className={styles.scrollSnapCenter} ref={createSectionRef('education')} id="education" right>
+      <Section 
+        className={styles.scrollSnapTarget} 
+        ref={createSectionRef('education')} 
+        id="education" 
+        right
+      >
         <header className={styles.sectionHeader}>
           Education
         </header>
@@ -150,7 +160,7 @@ const Home = () => {
           </section>
         </Card>
       </Section>
-    </>
+    </div>
   )
 }
 

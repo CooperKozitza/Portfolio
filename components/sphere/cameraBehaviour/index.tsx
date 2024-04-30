@@ -34,7 +34,7 @@ const CameraBehavior = ({ viewName }: { viewName: string }) => {
     }
   }, [viewName]);
 
-  useFrame((_, delta) => {
+  useFrame(() => {
     if (view) {
       camera.position.lerp(new THREE.Vector3(view.x, view.y, view.z), 0.015)
     }
