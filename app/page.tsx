@@ -45,7 +45,7 @@ const Home = () => {
         <header className={styles.sectionHeader}>
           About Me
         </header>
-        <p className="pb-10 text-center">
+        <p className="pb-6 md:pb-10 text-center">
           Hello! I&apos;m Cooper, a computational math student and software engineer who thrives on solving complex problems and applying mathematical principles to develop innovative software solutions.
         </p>
         <section className={styles.teaserGrid} onClick={() => scrollToSection('education')}>
@@ -60,7 +60,7 @@ const Home = () => {
               <span className="hidden md:block">
                 Learn More
               </span>
-              <figure className="pl-1 transition-transform group-hover:translate-x-2">
+              <figure className="px-1 transition-transform group-hover:translate-x-2">
                 <FaChevronRight />
               </figure>
             </a>
@@ -113,7 +113,7 @@ const Home = () => {
           Education
         </header>
         <Card className="max-w-2xl">
-          <section className="pb-8" id="uw">
+          <section className="pb-4 md:pb-8" id="uw">
             <time className={styles.monoText}>Starting Fall 2024</time>
             <header className={styles.subsectionHeader + ' flex items-center}'}>
               <figure className={styles.icon}>
@@ -134,7 +134,7 @@ const Home = () => {
               &nbsp;with a minor in Physics.
             </p>
           </section>
-          <section className="pb-8" id="psu">
+          <section className="pb-4 md:pb-8" id="psu">
             <time className={styles.monoText}>Summer 2023-Fall 2024</time>
             <header className={styles.subsectionHeader + ' flex items-center}'}>
               <figure className={styles.icon}>

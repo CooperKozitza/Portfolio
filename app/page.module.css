@@ -3,7 +3,7 @@
 }
 
 .sectionHeader {
-  @apply text-center text-4xl tracking-tight font-display p-10
+  @apply text-center text-4xl tracking-tight font-display p-6 md:p-10
 }
 
 .subsectionHeader {
@@ -11,7 +11,7 @@
 }
 
 .teaserGrid {
-  @apply grid grid-cols-1 md:grid-cols-3 gap-6
+  @apply grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6
 }
 
 .teaserCard {
@@ -23,7 +23,7 @@
 }
 
 .monoText {
-  @apply font-bold font-mono pb-1
+  @apply font-bold font-mono
 }
 
 .icon {
