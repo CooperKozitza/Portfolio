@@ -1,12 +1,13 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { abs } from "three/examples/jsm/nodes/Nodes.js";
 
 export interface SectionRefs {
   [key: string]: HTMLDivElement | null;
 }
 
-export default function useSectionScroll(ref: React.RefObject<SectionRefs>) {
+export default function useSectionScroll(ref: React.RefObject<SectionRefs>, scrollSnap = false) {
   const [activeSection, setActiveSection] = useState<string | null>(null);
 
   const sectionRefs = useRef<SectionRefs>(ref.current);
@@ -18,23 +19,25 @@ export default function useSectionScroll(ref: React.RefObject<SectionRefs>) {
   const debounceRef = useRef<boolean>(false);
 
   const handleScroll = useCallback(() => {
-    if (!debounceRef.current) {
-      debounceRef.current = true;
+      const previousScroll = window.scrollY;
 
+      debounceRef.current = true;
       setTimeout(() => {
         debounceRef.current = false;
 
-        if (Math.abs(activeSectionTopRef.current - window.scrollY) > 1) {
-          window.scrollTo({ top: activeSectionTopRef.current, behavior: 'smooth' });
+        const vel = window.scrollY - previousScroll;
+        const dist = Math.abs(activeSectionTopRef.current - window.scrollY);
+
+        if (Math.abs(vel) < 10 && dist > 1) {
+          //window.scrollTo({ top: activeSectionTopRef.current, behavior: 'smooth' });
         }
-      }, 2500)
-    }
+      }, 1000)
   }, [])
 
   useEffect(() => {
     if (!sectionRefs.current) return;
 
-    activeSectionTopRef.current = window.screenY;
+    activeSectionTopRef.current = window.scrollY;
 
     observerRef.current = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -93,7 +96,10 @@ export default function useSectionScroll(ref: React.RefObject<SectionRefs>) {
       }
 
       activeSectionTopRef.current = top;
-      window.scrollTo({ top, behavior: 'smooth' })
+
+      timeoutRef.current = setTimeout(() => {
+        //window.scrollTo({ top, behavior: 'smooth' })
+      }, 500);
     }
   }, [activeSection]);
 

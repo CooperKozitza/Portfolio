@@ -1,3 +1,18 @@
+.scrollSnapContainer {
+  height: calc(100vh - 5.5rem);
+  overflow-y: auto;
+
+  scroll-snap-type: y mandatory;
+}
+
+.scrollSnapStart {
+  scroll-snap-align: start;
+}
+
+.scrollSnapCenter {
+  scroll-snap-align: center;
+}
+
 .sectionHeader {
   @apply text-center text-4xl tracking-tight font-display p-10
 }

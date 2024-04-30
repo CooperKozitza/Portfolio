@@ -30,13 +30,13 @@ const Home = () => {
 
   return (
     <>
-      <figure className="fixed top-0 left-0 w-full h-dvh">
-        <SphereBackground viewName={activeSection} />
-      </figure>
-      <section className="w-full h-dvh" ref={createSectionRef('hero')} id="hero" data-scroll-align="start">
+    <figure className="fixed top-0 left-0 w-full h-dvh" style={{ zIndex: -1 }}>
+      <SphereBackground viewName={activeSection} />
+    </figure>
+      <section className={`w-full h-dvh ${styles.scrollSnapStart}`} ref={createSectionRef('hero')} id="hero">
         <Hero />
       </section>
-      <Section ref={createSectionRef('about')} id="about">
+      <Section className={styles.scrollSnapCenter} ref={createSectionRef('about')} id="about">
         <header className={styles.sectionHeader}>
           About Me
         </header>
@@ -51,7 +51,7 @@ const Home = () => {
                 Exploring the depths of mathematics and its applications in modern computing.
               </p>
             </div>
-            <a className={styles.teaserLink} onClick={() => setActiveSection('education')}> 
+            <a className={styles.teaserLink} onClick={() => setActiveSection('education')}>
               <span>
                 Learn More
               </span>
@@ -98,12 +98,12 @@ const Home = () => {
           </Card>
         </section>
       </Section>
-      <Section ref={createSectionRef('education')} id="education" right>
+      <Section className={styles.scrollSnapCenter} ref={createSectionRef('education')} id="education" right>
         <header className={styles.sectionHeader}>
           Education
         </header>
         <Card className="max-w-2xl">
-        <section className="pb-8" id="uw">
+          <section className="pb-8" id="uw">
             <time className={styles.monoText}>Starting Fall 2024</time>
             <header className={styles.subsectionHeader + ' flex items-center}'}>
               <figure className={styles.icon}>
@@ -113,10 +113,10 @@ const Home = () => {
             </header>
             <p>
               Committed to studying&nbsp;
-              <a 
+              <a
                 className="underline underline-offset-2"
-                href="https://www.washington.edu/students/gencat/program/S/AppliedandComputationalMathSciences-994.html#undergradPrograms" 
-                target="_blank" 
+                href="https://www.washington.edu/students/gencat/program/S/AppliedandComputationalMathSciences-994.html#undergradPrograms"
+                target="_blank"
                 rel="noreferrer noopener"
               >
                 Applied and Computational Mathematical Sciences
@@ -150,7 +150,7 @@ const Home = () => {
           </section>
         </Card>
       </Section>
-    </> 
+    </>
   )
 }
 

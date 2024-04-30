@@ -1,0 +1,8 @@
+.scrollSnapContainer {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  padding-top: 5.5rem;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+}

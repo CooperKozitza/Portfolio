@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   description: 'My portfolio website',
 }
 
+import styles from './layout.module.css'
+
 export default function RootLayout({
   children,
 }: {
@@ -26,7 +28,7 @@ export default function RootLayout({
     <html lang="en" className={`${roboto.variable}`}>
       <body className="text-black dark:text-white dark:bg-neutral-800">
         <Navbar />
-        <div className="font-sans" style={{ paddingTop: '5.5rem' }}>
+        <div className={`font-sans ${styles.scrollSnapContainer}`}>
           {children}
         </div>
       </body>
