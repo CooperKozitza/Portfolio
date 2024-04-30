@@ -5,10 +5,7 @@
 }
 
 .text {
-  margin-top: 5.5rem;
-  margin-bottom: 5.5rem;
-
-  @apply max-w-xl
+  @apply max-w-xl my-6 lg:my-16
 }
 
 @keyframes fade-in {

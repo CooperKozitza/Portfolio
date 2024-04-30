@@ -15,7 +15,7 @@
 }
 
 .teaserCard {
-  @apply flex flex-col justify-between
+  @apply transition-shadow duration-200 flex md:flex-col justify-between md:h-56 min-h-fit hover:shadow-xl
 }
 
 .teaserLink {
@@ -27,5 +27,5 @@
 }
 
 .icon {
-  @apply flex items-center justify-center pr-2 dark:invert
+  @apply flex items-center justify-center dark:invert
 }

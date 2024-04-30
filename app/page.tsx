@@ -46,18 +46,18 @@ const Home = () => {
           About Me
         </header>
         <p className="pb-10 text-center">
-          Hello! I&apos;m Cooper, a student at the intersection of computational math and software engineering. From algorithms to applications, my academic and professional experiences have shaped my approach to technology, driving me to innovate and improve wherever I can.
+          Hello! I&apos;m Cooper, a computational math student and software engineer who thrives on solving complex problems and applying mathematical principles to develop innovative software solutions.
         </p>
-        <section className={styles.teaserGrid}>
+        <section className={styles.teaserGrid} onClick={() => scrollToSection('education')}>
           <Card className={styles.teaserCard + ' group'}>
             <div>
               <header className={styles.subsectionHeader}>Education</header>
-              <p className="pb-8">
+              <p>
                 Exploring the depths of mathematics and its applications in modern computing.
               </p>
             </div>
-            <a className={styles.teaserLink} onClick={() => scrollToSection('education')}>
-              <span>
+            <a className={styles.teaserLink}>
+              <span className="hidden md:block">
                 Learn More
               </span>
               <figure className="pl-1 transition-transform group-hover:translate-x-2">
@@ -68,7 +68,7 @@ const Home = () => {
           <Card className={styles.teaserCard + ' group'}>
             <div>
               <header className={styles.subsectionHeader}>Experience</header>
-              <p className="pb-8">
+              <p>
                 Three years of engineering software and effective algorithms in a professional setting.
               </p>
             </div>
@@ -86,7 +86,7 @@ const Home = () => {
           <Card className={styles.teaserCard + ' group'}>
             <div>
               <header className={styles.subsectionHeader}>Examples</header>
-              <p className="pb-8">
+              <p>
                 Projects where I apply complex concepts to create practical solutions.
               </p>
             </div>
