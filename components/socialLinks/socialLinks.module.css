@@ -1,4 +1,4 @@
 .link {
-  @apply transition duration-300 hover:bg-highlight;
+  @apply transition duration-300 hover:bg-black hover:text-white hover:dark:bg-white;
   @apply rounded-md  dark:text-white p-2 mr-3
 }

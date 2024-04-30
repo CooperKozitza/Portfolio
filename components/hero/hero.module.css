@@ -1,6 +1,14 @@
-.text {
+.hero {
   animation: fade-in 1s ease-in;
-  @apply mx-6 lg:mx-16 h-full flex flex-col justify-center
+
+  @apply mx-6 lg:mx-16 h-full flex flex-col justify-end
+}
+
+.text {
+  margin-top: 5.5rem;
+  margin-bottom: 5.5rem;
+
+  @apply max-w-xl
 }
 
 @keyframes fade-in {

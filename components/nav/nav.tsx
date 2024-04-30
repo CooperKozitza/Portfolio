@@ -1,31 +1,16 @@
 'use client';
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FaBars } from "react-icons/fa"
 
 import styles from "./nav.module.css"
 
 const Navbar = () => {
   const [menuExpanded, setMenuExpanded] = useState(false);
-  const [navbarBg, setNavbarBg] = useState(false);
-
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setNavbarBg(window.scrollY > 10);
-    } 
-
-    handleScroll()
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    }
-  }, [])
 
   return (
     <nav className={styles.nav}>
-      <div className={`${styles.navbar} ${navbarBg ? 'bg-white dark:bg-neutral-800 shadow-md border dark:border-black' : ''}`}>
+      <div className={styles.navbar}>
         <h1 className={`${styles.logo} ${styles.navbarLinks}`}><a href="/">CK</a></h1>
         <button
           className={styles.navbarToggle}

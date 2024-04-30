@@ -24,7 +24,7 @@ const SphereBackground = ({ viewName }: { viewName?: string | null }) => {
   return (
     <div className="absolute size-full top-0 left-0">
       <Canvas>
-        <ParticleSphere size={0.01} radius={2} color={0x000} />
+        <ParticleSphere size={0.01} radius={2} color={color} />
         <CameraBehavior viewName={viewName || ''} />
       </Canvas>
     </div>
