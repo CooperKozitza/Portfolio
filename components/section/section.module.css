@@ -1,19 +1,16 @@
 .section {
-  @apply relative w-full min-h-fit flex items-center my-96 h-dvh
+  @apply relative w-full h-dvh  flex items-center my-96
 }
 
 .sectionInner {
-  @apply max-w-4xl mx-6 md:mx-16 min-h-fit
+  @apply max-w-4xl py-6 mx-6 md:mx-16 min-h-fit max-h-dvh overflow-y-auto no-scrollbar
 }
 
-.fadeIn section {
+.fadeIn section, .fadeIn div {
   opacity: 0;
   animation: fadeIn ease 1s;
   animation-fill-mode: forwards;
-}
-
-.fadeIn section {
-  animation-delay: calc(var(--depth, 0) * 0.05s + var(--order, 0) * 0.5s);
+  animation-delay: calc(var(--depth, 1) * 0.5s + var(--order, 1) * 0.5s);
 }
 
 @keyframes fadeIn {

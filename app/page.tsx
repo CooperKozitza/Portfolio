@@ -4,17 +4,21 @@ import React, { useCallback } from "react";
 import Image from "next/image";
 import { FaChevronRight } from "react-icons/fa";
 
+// Components
 import SphereBackground from "@/components/sphere/background";
 import Card from "@/components/card/card";
 import Section from "@/components/section";
 import Hero from "@/components/hero/hero";
 
+// Styling
 import styles from "./page.module.css"
 
+// Images
 import uw from "@/public/static/images/uw.png"
 import psu from "@/public/static/images/psu.png"
-import useSectionObserver from "@/utils/sectionObserver";
 
+import useSectionObserver from "@/utils/sectionObserver";
+import Timeline from "@/components/timeline";
 
 const Home = () => {
   const { activeSection, createSectionRef } = useSectionObserver();
@@ -45,7 +49,7 @@ const Home = () => {
         <header className={styles.sectionHeader}>
           About Me
         </header>
-        <p className="pb-6 md:pb-10 text-center">
+        <p className={`pb-6 md:pb-10 text-center ${styles.gradientBg}`}>
           Hello! I&apos;m Cooper, a computational math student and software engineer who thrives on solving complex problems and applying mathematical principles to develop innovative software solutions.
         </p>
         <section className={styles.teaserGrid} onClick={() => scrollToSection('education')}>
@@ -158,6 +162,25 @@ const Home = () => {
               and completed 9 AP courses, demonstrating strong academic rigor.
             </p>
           </section>
+        </Card>
+      </Section>
+      <Section
+        className={styles.scrollSnapTarget}
+        ref={createSectionRef('work-timeline')}
+        id="work-timeline"
+      >
+        <header className={styles.sectionHeader}>
+          Work Experience
+        </header>
+        <Timeline>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </Timeline>
+        <Card>
+          Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.
         </Card>
       </Section>
     </div>

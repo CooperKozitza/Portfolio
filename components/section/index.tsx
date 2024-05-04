@@ -18,7 +18,7 @@ const Section = React.forwardRef<HTMLDivElement, SectionProps>(({ children, id, 
 
   const assignAnimationDelays = useCallback((element: HTMLElement, depth = 0) => {
     Array.from(element.children).forEach((child, index) => {
-      if (child instanceof HTMLDivElement) {
+      if (child instanceof HTMLElement) {
         child.style.setProperty('--depth', depth.toString());
         child.style.setProperty('--order', index.toString());
 
